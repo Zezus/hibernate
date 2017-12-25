@@ -16,6 +16,11 @@ import java.util.List;
 @Controller
 public class StudentController {
 
+    @RequestMapping(value = "/registration")
+    public String registration(){
+        return "registration";
+    }
+
     @Autowired
     private StudentService studentService;
 

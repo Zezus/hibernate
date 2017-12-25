@@ -17,15 +17,12 @@
     </security:http>
 
     <security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service>
-                <security:user name="nursike"
-                               password="{noop}123"
-                               authorities="ROLE_USER"/>
-            </security:user-service>
-            <!--<security:password-encoder ref="encoder"></security:password-encoder>-->
+        <security:authentication-provider
+        user-service-ref="userDetailsService">
+            <security:password-encoder ref="encoder"></security:password-encoder>
         </security:authentication-provider>
     </security:authentication-manager>
+    <bean id="userDetailsService" class="kz.nursike.service.UserDetailsServiceImpl"/>
     <bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
         <constructor-arg name="strength" value="11"/>
     </bean>
